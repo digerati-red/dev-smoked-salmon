@@ -12,7 +12,7 @@ from salmon import config
 from salmon.checks import mqa_test
 from salmon.checks.integrity import (
     check_integrity,
-    format_integrity,
+    format_integrity_check,
     sanitize_integrity,
 )
 from salmon.checks.logs import check_log_cambia
@@ -527,7 +527,7 @@ def edit_metadata(path, tags, metadata, source, rls_data, recompress, auto_renam
             default=True,
             ):
             result = check_integrity(path)
-            click.echo(format_integrity(result))
+            click.echo(format_integrity_check(result))
             
             if not result[0] and metadata['scene']:
                 click.secho(

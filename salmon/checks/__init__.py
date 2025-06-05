@@ -51,9 +51,12 @@ def upconv(path):
 
 @check.command()
 @click.argument("path", type=click.Path(exists=True, resolve_path=True))
-def integrity(path):
+@click.option(
+    "--md5only", "-m", is_flag=True, help="Only sanitize md5 tag"
+)
+def integrity(path,md5only):
     """Check the integrity of audio files"""
-    handle_integrity_check(path)
+    handle_integrity_check(path,md5only)
 
 
 @check.command()
